@@ -43,3 +43,10 @@ class Mubi(object):
             return user_id
         elif response.url == 'https://mubi.com/login':
             raise MubiException("Sorry, email or password doesn't work")
+
+    def request(self, method, url_or_path, *args, **kwargs):
+        if '://' not in url_or_path:
+            url = 'http://mubi.com/' + url_or_path.lstrip('/')
+        else:
+            url = url_or_path
+        return self.session.request(method, url, *args, **kwargs)
