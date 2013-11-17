@@ -13,7 +13,7 @@ MUBI_USER_ID = os.getenv('MUBI_USER_ID')
 class MubiTest(unittest.TestCase):
     def test_login(self):
         m = Mubi(MUBI_EMAIL, MUBI_PASSWORD)
-        assert m.user_id == MUBI_USER_ID
+        assert m.me == MUBI_USER_ID
 
     def test_invalid_credentials(self):
         with self.assertRaises(MubiException):
