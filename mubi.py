@@ -1,7 +1,7 @@
 # coding: utf-8
 
+import re
 import requests
-from lxml.html import fromstring
 
 
 class MubiException(Exception):
@@ -20,9 +20,18 @@ class Mubi(object):
         self.me = self._login(email, password)
 
     def _login(self, email, password):
-        login_html = self.session.get('https://mubi.com/login').content
-        auth_token = (fromstring(login_html)
-                      .xpath("//input[@name='authenticity_token']/@value"))
+        login_html = self.session.get('https://mubi.com/login').text
+
+        # Everybody stand back!
+        m = re.search('<input\s+name="authenticity_token".*?value="(.*?)"\s*\/>',
+                      login_html)
+        if m is None:
+            raise ValueError(
+                "Can't match authenticity token. "
+                "It seems the login page has changed."
+            )
+
+        auth_token = m.group(0) # our Achilles heel
         payload = {
             'utf8': '✓',
             'authenticity_token': auth_token,
