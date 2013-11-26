@@ -1,5 +1,6 @@
 # coding: utf-8
 
+import os
 import re
 import requests
 
@@ -13,15 +14,19 @@ def mubicom(path, use_ssl=False):
     protocol = 'https' if use_ssl else 'http'
     return '{0}://mubi.com/{1}'.format(protocol, path.lstrip('/'))
 
-def login(email, password, identify=False):
-    """Returns a logged in requests.Session object.
-    Enable `identify` to get a tuple in the form (session object, user id)
+def login(email=None, password=None, identify=False):
+    """Returns a logged in requests.Session object using your credentials.
 
-    If given email address or password fails you get a `MubiException`.
+    You can either pass their directly or specify via environment variables.
+    Enable identify parameter to get a tuple in the form (session object, user id).
+    If given email address or password fails you get a MubiException.
     """
+    email = email or os.getenv('MUBI_EMAIL')
+    password = password or os.getenv('MUBI_PASSWORD')
     if not email or not password:
         raise ValueError("Credentials must be specified. "
-                         "Pass them into login method")
+                         "You can either pass their directly into login method "
+                         "or specify via environment variables.")
 
     session = requests.Session()
     login_html = session.get(mubicom('login', True)).text
