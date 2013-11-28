@@ -9,8 +9,7 @@ Powered by awesome [Requests](http://www.python-requests.org/en/latest/).
 
 First, type `pip install mubi` to get it.
 
-Then, to access the most interesting part of the mubi.com content you'll need to be logged in. It's time for `mubi.py`:
-
+Then, to access the most interesting part of the [mubi.com](http://mubi.com) content you'll need to be logged in. It's time for `mubi.py`:
 ```python
 >>> from mubi import login, mubicom
 >>> session, me = login('email', 'password', identify=True)
@@ -20,10 +19,24 @@ Then, to access the most interesting part of the mubi.com content you'll need to
 '123456'
 
 # Use the requests.Session object (now with cookies) as usual
->>> session.get(mubicom('/watch'))
+>>> session.get(mubicom('/films'))
 <Response [200]>
+
 ```
 
-What's next you ask? Do requests!
+To be a good internet citizen provide some information about yourself:
+```python
+>>> import requests
+>>> from mubi import login
 
-For real life usage and useful tips, please see [examples.py](https://github.com/mstolyarchuk/mubi.py/examples.py).
+>>> s = requests.Session()
+>>> s.headers.update({
+...     # Add something useful
+...     'User-Agent': 'Robot/1.0 (http://github.com/example/repo beep@example.com)'
+... })
+
+>>> mubi = login('email', 'password', session=s)
+```
+And that's it!
+
+What's next you ask? Do requests! For real life usage, please see [examples.py](https://github.com/mstolyarchuk/mubi.py/blob/master/examples.py).
