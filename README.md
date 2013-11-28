@@ -1,4 +1,4 @@
-# mubi
+# mubi [![Build Status](https://travis-ci.org/mstolyarchuk/mubi.py.png)](https://travis-ci.org/mstolyarchuk/mubi.py)
 
 A good starting point for getting some data from [mubi.com](http://mubi.com). Since MUBI doesn't provide a public API, you need to do all the things manually.
 `mubi.py` created to help you with the login process.
