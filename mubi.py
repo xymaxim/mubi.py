@@ -14,7 +14,7 @@ def mubicom(path, use_ssl=False):
     protocol = 'https' if use_ssl else 'http'
     return '{0}://mubi.com/{1}'.format(protocol, path.lstrip('/'))
 
-def login(email=None, password=None, identify=False):
+def login(email=None, password=None, session=None, identify=False):
     """Returns a logged in requests.Session object using your credentials.
 
     You can either pass their directly or specify via environment variables.
@@ -28,7 +28,9 @@ def login(email=None, password=None, identify=False):
                          "You can either pass their directly into login method "
                          "or specify via environment variables.")
 
-    session = requests.Session()
+    if session is None:
+        session = requests.Session()
+
     login_html = session.get(mubicom('login', True)).text
 
     # Everybody stand back!
