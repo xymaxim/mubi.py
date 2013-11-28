@@ -1,0 +1,13 @@
+language: python
+python:
+- 2.7
+install: python setup.py install
+script: python test_mubi.py
+notifications:
+  email:
+  - maxim.stolyarchuk@gmail.com
+env:
+  global:
+  - secure: dx5dNL3SGz42HECmbWDigPwxIBttsNlv2UC/R9yfhmdAFgxsPNixN80Rn1srZSjMxMTRrN05efQ72SyLtojcsCNYhjPsgdfwZmitXYgjanfc01FmOUo6xdRrHkFitJ0Ahcz266cPvsrain1Xj5CgnMcdZhhl13wJe1mXra74zzE=
+  - secure: UWZGp1RwaLh7Zg+YMZqJSJt6nCNBcirxnEncjjWV89Tsic6yBB7fne8ARHid1h04N52vDhi5zLE1XfiMWTNltwIeDfJ82gpSiKb7XS9z8+qSKfYgd5C9yuGsSFVAhHFUaCcfGC1JhB5pjOS9nNt0EAyxQt5YhyVFy71ztSJg1l8=
+  - secure: HFzkuyV8XArokXZOaOjDRj81bwngZdiDGJ9t9lG66NH5J6K5A1m6iLQtzij9/f+gqotIPlRrTNq+u4xFfeDbKifY9Kd8JG83KYlJ8TBJU0gJAVLrSPNHFuz8AQK6N8HoVQsxvm9PKjAEORlVvhKYSUhR6Sho3a3JIhk17RtWrTQ=
