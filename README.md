@@ -7,9 +7,7 @@ Powered by awesome [Requests](http://www.python-requests.org/en/latest/).
 
 ## Usage
 
-First, type `pip install mubi` to get it.
-
-Then, to access the most interesting part of the [mubi.com](http://mubi.com) content you'll need to be logged in. It's time for `mubi.py`:
+To access the most interesting part of the [mubi.com](http://mubi.com) content you'll need to be logged in. It's time for `mubi.py`:
 ```python
 >>> from mubi import login, mubicom
 >>> session, me = login('email', 'password', identify=True)
@@ -32,11 +30,14 @@ To be a good internet citizen provide some information about yourself:
 >>> s = requests.Session()
 >>> s.headers.update({
 ...     # Add something useful
-...     'User-Agent': 'Robot/1.0 (http://github.com/example/repo beep@example.com)'
-... })
+...     'User-Agent': 'Mr. Robot/1.0 (http://github.com/example/repo beep@example.com)'
+>>> })
 
 >>> mubi = login('email', 'password', session=s)
 ```
-And that's it!
 
-What's next you ask? Do requests! For real life usage, please see [examples.py](https://github.com/mstolyarchuk/mubi.py/blob/master/examples.py).
+For the next steps please see [examples.py](https://github.com/mstolyarchuk/mubi.py/blob/master/examples.py).
+
+## Install
+
+    $ pip install mubi
