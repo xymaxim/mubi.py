@@ -23,7 +23,7 @@ need to be logged in. It's time for ``mubi.py``:
     '123456'
 
     # Use the requests.Session object (now with cookies) as usual
-    >>> session.get(mubicom('/films'))
+    >>> session.get(mubicom('/films/showing'))
     <Response [200]>
 
 To be a good internet citizen provide some information about yourself:
