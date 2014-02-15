@@ -48,7 +48,6 @@ def login(email=None, password=None, session=None, identify=False):
         'session[remember_me]': 0,
         'commit': 'Login'
     })
-    #import ipdb; ipdb.set_trace()
     # Once a user successfully authenticates, MUBI will redirect a user
     # to the "now showing" page, otherwise the login page will be shown.
     if response.url == mubicom('films/showing', True):
