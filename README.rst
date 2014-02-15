@@ -41,8 +41,6 @@ To be a good internet citizen provide some information about yourself:
 
     >>> mubi = login('email', 'password', session=s)
 
-For the next steps please see `examples.py`_.
-
 Install
 -------
 
