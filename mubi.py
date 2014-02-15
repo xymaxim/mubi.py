@@ -42,20 +42,21 @@ def login(email=None, password=None, session=None, identify=False):
 
     response = session.post(mubicom('session', True), data={
         'utf8': '✓',
-        'authenticity_token': m.group(0),
-        'email': email,
-        'password': password,
-        'x': 0,
-        'y': 0
+        'authenticity_token': m.group(1),
+        'session[email]': email,
+        'session[password]': password,
+        'session[remember_me]': 0,
+        'commit': 'Login'
     })
+    #import ipdb; ipdb.set_trace()
     # Once a user successfully authenticates, MUBI will redirect a user
-    # to the homepage, otherwise the login page will be shown.
-    if response.url == mubicom('home'):
+    # to the "now showing" page, otherwise the login page will be shown.
+    if response.url == mubicom('films/showing', True):
         if identify:
             # Yet another redirect to the user profile page, e.g. /users/123456
             user_url = session.get(mubicom('profile')).url
             user_id = user_url.split('/')[-1]
             return session, user_id
         return session
-    elif response.url == mubicom('login', True):
+    elif response.url == mubicom('session', True):
         raise MubiException("Sorry, email or password doesn't work")
