@@ -40,6 +40,8 @@ To be a good internet citizen provide some information about yourself:
     >>> })
 
     >>> mubi = login('email', 'password', session=s)
+    
+And that's it!
 
 Install
 -------
@@ -53,3 +55,4 @@ Install
 .. _examples.py: https://github.com/mstolyarchuk/mubi.py/blob/master/examples.py
 
 .. |Build Status| image:: https://travis-ci.org/mstolyarchuk/mubi.py.png
+                 :target: https://travis-ci.org/mstolyarchuk/mubi.py
